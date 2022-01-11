@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Graph from '../../components/Graph/Graph';
+import { IPCType } from '../../types/IPCIndicator.types';
 import { IPCIndicator } from '../../services/IPCIndicator/IPCIndicator.service';
+
+import Graph from '../../components/Graph/Graph';
 import './Home.css';
 
-function Home() {
+const Home = () => {
 
   const [ipcData, setIpcData] = useState([]);
   const [showChart, setShowChart] = useState(false);
@@ -12,7 +14,7 @@ function Home() {
     IPCIndicator.get()
     .then(response => response.json())
     .then((response) => {
-      response.forEach(element => {
+      response.forEach((element: IPCType) => {
         element.date = new Date(element.date)
       })
       setIpcData(response);
