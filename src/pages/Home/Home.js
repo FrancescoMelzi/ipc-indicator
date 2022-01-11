@@ -6,26 +6,32 @@ import './Home.css';
 function Home() {
 
   const [ipcData, setIpcData] = useState([]);
+  const [showChart, setShowChart] = useState(false);
 
   useEffect(() => {
     IPCIndicator.get()
     .then(response => response.json())
     .then((response) => {
-      console.log('response')
-      console.log(response)
+      response.forEach(element => {
+        element.date = new Date(element.date)
+      })
       setIpcData(response);
+      setShowChart(true)
     }).catch((err) => {
-      console.log('err');
       console.log(err);
     });
   }, []);
 
   return (
-    <div className="App">
-      <h1>Home</h1>
-      <Graph data={ipcData} />
-      <h2>aa</h2>
-{/*Consider X as the Time axis and Y as the Price axis. */}
+    <div className="Home">
+      <h1>IPC Indicator</h1>
+      {
+        showChart && (
+          <div className='graph'>
+            <Graph type="hybrid" data={ipcData} width={800} />
+          </div>
+        )
+      }
     </div>
   );
 }
