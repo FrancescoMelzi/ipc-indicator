@@ -1,7 +1,6 @@
 .Login {
   display: flex;
-  flex-direction: column;
-  background-color: white;
+  justify-content: center;
   width: 100%;
   height: 100vh;
   align-items: center;
@@ -18,6 +17,10 @@
   text-align: center;
 }
 
+.Login-alert {
+  position: absolute; 
+  bottom: 0;
+}
 
 @media (max-width: 700px) {
   .Login {

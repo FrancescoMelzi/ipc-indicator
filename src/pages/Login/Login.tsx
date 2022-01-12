@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import { Alert, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Box } from '@mui/system';
 import Visibility from '@mui/icons-material/Visibility';
@@ -17,6 +17,8 @@ const Login = ()  => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -33,8 +35,8 @@ const Login = ()  => {
         navigate('/home');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        setErrorMessage(error.message);
+        setShowError(true);
       });
   };
 
@@ -80,9 +82,22 @@ const Login = ()  => {
           </FormControl>
         </div>
         <div className='Login-button'>
-          <Button variant="contained" onClick={logIn}>Iniciar Sesión</Button>    
+          <Button
+            variant="contained"
+            onClick={logIn}
+            disabled={email === '' || password === ''}
+          >
+            Iniciar Sesión
+          </Button>    
         </div>
       </Box>
+      {
+        showError && (
+          <Stack sx={{ width: '100%' }} spacing={2} className='Login-alert'>
+            <Alert severity="error">{errorMessage}</Alert>
+          </Stack>
+        )
+      }
     </div>
   );
 }
