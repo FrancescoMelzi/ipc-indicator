@@ -1,0 +1,30 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  align-content: center;
+}
+
+.Login-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-button {
+  margin: 20px;
+  text-align: center;
+}
+
+.Login-alert {
+  position: absolute; 
+  bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .Login {
+    width: 100%;
+    margin: 50px;
+  }
+}

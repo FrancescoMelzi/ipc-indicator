@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Router from '../Router';
+import initApp from '../../firebase/config';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const App = () => {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  initApp();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
   return (
-    <Router />
+    <Router isLoggedIn={isLoggedIn}/>
   );
 }
 
