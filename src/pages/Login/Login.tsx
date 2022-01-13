@@ -9,7 +9,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import './Login.css';
-
+/**
+ * Login component.
+ */
 const Login = ()  => {
 
   type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
@@ -26,10 +28,11 @@ const Login = ()  => {
     event.preventDefault();
   };
 
+  /**
+   * Login user.
+   */
   const logIn = () => {
-
     const auth = getAuth();
-
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         navigate('/home');

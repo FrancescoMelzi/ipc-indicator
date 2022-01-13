@@ -5,11 +5,16 @@ import { IPCIndicator } from '../../services/IPCIndicator/IPCIndicator.service';
 import Graph from '../../components/Graph/Graph';
 import './Home.css';
 
+/**
+ * Home component.
+ */
 const Home = () => {
 
   const [ipcData, setIpcData] = useState([]);
   const [showChart, setShowChart] = useState(false);
-
+  /**
+   * Get data to populate the database.
+   */
   useEffect(() => {
     IPCIndicator.get()
     .then(response => response.json())

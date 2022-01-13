@@ -21,7 +21,10 @@ import { SingleValueTooltip } from "react-stockcharts/lib/tooltip";
 import { fitWidth } from "react-stockcharts/lib/helper";
 import { last } from "react-stockcharts/lib/utils";
 
-const AreaChartWithEdge = React.forwardRef((props, ref) => {
+/**
+ * Graph component.
+ */
+const Graph = React.forwardRef((props, ref) => {
 		const { type, data: initialData, width, ratio } = props;
 
 		const xScaleProvider = discontinuousTimeScaleProvider
@@ -95,15 +98,15 @@ const AreaChartWithEdge = React.forwardRef((props, ref) => {
 		);
 });
 
-AreaChartWithEdge.propTypes = {
+Graph.propTypes = {
 	data: PropTypes.array.isRequired,
 	width: PropTypes.number.isRequired,
 	ratio: PropTypes.number.isRequired,
 	type: PropTypes.oneOf(["svg", "hybrid"]).isRequired,
 };
 
-AreaChartWithEdge.defaultProps = {
+Graph.defaultProps = {
 	type: "svg",
 };
 
-export default fitWidth(AreaChartWithEdge);
+export default fitWidth(Graph);

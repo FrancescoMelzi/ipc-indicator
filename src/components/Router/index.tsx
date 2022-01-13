@@ -4,23 +4,28 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 
+/**
+ * The router component implements different routes if the user is logged.
+ */
 const Router = ({ isLoggedIn }: {isLoggedIn: boolean}) => {
 
   return (
     <BrowserRouter>
+      <Routes>
       {
         isLoggedIn ? (
-          <Routes>
+          <>
             <Route path="/" element={<Home />} />
             <Route path="home" element={<Home />} />
-          </Routes>
+          </>
         ) : (
-          <Routes>
+          <>
             <Route path="/" element={<Login />} />
             <Route path="login" element={<Login />} />
-          </Routes>
+          </>
         )
       }
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -8,9 +8,13 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  /**
+   * Init firebase.
+   */
   initApp();
-
+  /**
+   * Review if the user is logged.
+   */
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
