@@ -1,7 +1,22 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { IPCIndicator } from './IPCIndicator.service';
 
-test('renders learn react link', () => {
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+const withFetch = () => {
+  return IPCIndicator.get()
+    .then(response => response.json())
+    .then(res => res);
+}
+
+const unmockedFetch = global.fetch
+
+afterAll(() => {
+  global.fetch = unmockedFetch
+})
+
+describe('withFetch', () => {
+  test('works', async () => {
+    const json = await withFetch();
+    expect(Array.isArray(json)).toEqual(true)
+    expect(json.length).toBeGreaterThan(0);
+  })
+})

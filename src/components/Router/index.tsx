@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
@@ -23,5 +24,14 @@ const Router = ({ isLoggedIn }: {isLoggedIn: boolean}) => {
     </BrowserRouter>
   );
 };
+
+Router.propTypes = {
+	isLoggedIn: PropTypes.bool.isRequired,
+};
+
+Router.defaultProps = {
+	isLoggedIn: false,
+};
+
 
 export default Router;
