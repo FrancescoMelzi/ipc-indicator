@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
+import NotFound from '../../pages/NotFound/NotFound';
 
 /**
  * The router component implements different routes if the user is logged.
@@ -25,6 +26,7 @@ const Router = ({ isLoggedIn }: {isLoggedIn: boolean}) => {
           </>
         )
       }
+      <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
