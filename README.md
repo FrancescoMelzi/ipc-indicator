@@ -1,3 +1,15 @@
+# Challenge
+
+Live example: https://gbmipc.web.app/
+
+user: ivanvega08@outlook.com\
+password: gmbtest
+
+# Screenshots
+
+<img width="814" alt="Captura de Pantalla 2022-01-13 a la(s) 18 13 46" src="https://user-images.githubusercontent.com/34255584/149429116-43ea338e-95a8-4e0c-9c04-f3d892312421.png">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -10,6 +22,8 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+**Note: should add firebase env. **
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
